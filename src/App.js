@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from "react-router-dom";
+import LoginPage from "./pages/login";
+import AdminPage from "./pages/admin";
+import EmployeePage from "./pages/employee";
+import { Provider, useSelector } from "react-redux";
+import store from "./store";
+
+function Index() {
+  const session = useSelector((state) => state.session);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <LoginPage />,
+    },
+    {
+      path: "/admin",
+      element: <AdminPage />,
+      loader: () => {
+        if (session.isAuthenticated && session.rol === "admin") {
+          return null;
+        } else {
+          return redirect("/");
+        }
+      },
+    },
+    {
+      path: "/employee",
+      element: <EmployeePage />,
+      loader: () => {
+        if (session.isAuthenticated && session.rol === "employee") {
+          return null;
+        } else {
+          return redirect("/");
+        }
+      },
+    },
+  ]);
+  return <RouterProvider router={router} />;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Index />
+    </Provider>
   );
 }
 
