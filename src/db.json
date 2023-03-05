@@ -1,0 +1,55 @@
+{
+  "employees": [
+    {
+      "dni": "654301",
+      "names": "Julia",
+      "lastnames": "Perez ",
+      "email": "jperez@gmail.com",
+      "dateBirthday": "",
+      "phone": "",
+      "address": "",
+      "vaccinated": false,
+      "vaccinatedType": "",
+      "dateVaccinated": "",
+      "numberDosis": "",
+      "password": "1234",
+      "rol": "admin",
+      "id": 1,
+      "user": "jperez"
+    },
+    {
+      "dni": "66666",
+      "names": "Andres",
+      "lastnames": "Jalon",
+      "email": "jaloncito@gmail.com",
+      "dateBirthday": "",
+      "phone": "",
+      "address": "",
+      "vaccinated": false,
+      "vaccinatedType": "",
+      "dateVaccinated": "",
+      "numberDosis": "",
+      "user": "ajalon",
+      "password": "ujvrlv4z",
+      "id": 3
+    },
+    
+    {
+      "dni": "6558993309",
+      "names": "Andrea",
+      "lastnames": "Rodriguez",
+      "email": "andre@hotmail.com",
+      "dateBirthday": "1995-04-04",
+      "phone": "",
+      "address": "",
+      "vaccinated": false,
+      "vaccinatedType": "",
+      "dateVaccinated": "",
+      "numberDosis": "",
+      "user": "arodriguez",
+      "password": "jhppvw44",
+      "rol": "employee",
+      "id": 5
+    }
+  ]
+}

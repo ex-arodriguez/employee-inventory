@@ -1,0 +1,19 @@
+.bodyLogin{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 100px auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.logo{
+    width: 75%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 25px;
+}

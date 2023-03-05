@@ -12,6 +12,8 @@ import { Controller, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../store/sessionSlice";
+import img from "../../img/logo-Kruger-Principal.png";
+import styles from "./index.module.css";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -26,34 +28,48 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    dispatch(login(data));
-    console.log("session", data);
+    const objData = {
+      user: data.user,
+      password: data.password,
+      id: data.id,
+    };
+    dispatch(login(objData));
   };
 
   React.useEffect(() => {
-    if (session.isAuthenticated) {
+    if (session?.isAuthenticated) {
       if (session.rol === "admin") {
         navigate("/admin");
-      } else {
+      } else if (session.rol === "employee") {
         navigate("/employee");
       }
+    } else {
+      navigate("/");
     }
   }, [session]);
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
+    <div className={styles.bodyLogin}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <img className={styles.logo} src={img} alt={"Krugger"} />
+        </div>
         <Controller
-          name="username"
+          name="user"
           control={control}
           defaultValue=""
-          render={({ field }) => <TextField label="Usuario" {...field} />}
+          render={({ field }) => (
+            <TextField sx={{ width: "100%" }} label="Usuario" {...field} />
+          )}
         />
         <Controller
           name="password"
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <FormControl variant="outlined">
+            <FormControl
+              sx={{ width: "100%", marginTop: "25px" }}
+              variant="outlined"
+            >
               <InputLabel htmlFor="passwordId">Contraseña</InputLabel>
               <OutlinedInput
                 id="passwordId"
@@ -72,10 +88,15 @@ export default function LoginPage() {
           )}
         />
 
-        <Button type="submit" variant="contained">
+        <Button
+          sx={{ width: "100%", marginTop: "25px" }}
+          type="submit"
+          variant="contained"
+          color="warning"
+        >
           Entrar
         </Button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }

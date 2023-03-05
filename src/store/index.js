@@ -1,16 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
+import EmployeeSlice from "./employeeSlice";
 import SessionSlice from "./sessionSlice";
 
 function loadState() {
   const session = localStorage.getItem("session");
-  console.log("sesiones", session);
-  // if (!session) return undefined;
-
-  // return JSON.parse(session);
+  if (!session) return undefined;
+  return JSON.parse(session);
 }
 
 const store = configureStore({
-  reducer: { session: SessionSlice.reducer },
+  reducer: { session: SessionSlice.reducer, employee: EmployeeSlice.reducer },
   preloadedState: { session: loadState() },
 });
 

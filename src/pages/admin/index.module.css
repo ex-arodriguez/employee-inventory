@@ -1,0 +1,28 @@
+.container{
+    height: 100%;
+}
+
+.title{
+    color: #121a30;
+}
+
+.titleContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 7px;
+}
+
+.tableEmployees{
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+

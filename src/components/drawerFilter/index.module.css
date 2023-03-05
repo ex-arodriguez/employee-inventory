@@ -1,0 +1,12 @@
+.filterContainer{
+    padding: 20px;
+    width: 350px;
+    display: flex;
+    height: 100%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
